@@ -30,10 +30,12 @@ export const useCsv = () => {
         })
     }
 
-
+    // read csv by streaming from huge file
     const streamParsing = (url, stepCallback, completeCallback) => {
         Papa.parse(url, {
             // download: true,
+            header: false,
+            dynamicTyping: true,
             step: stepCallback,
             complete: completeCallback
         });

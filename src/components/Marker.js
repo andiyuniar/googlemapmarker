@@ -1,6 +1,5 @@
-import React, { useMemo, useState, useEffect } from "react";
+import React, { useMemo } from "react";
 import { MarkerF } from "@react-google-maps/api";
-import { useCsv } from "../useCsv";
 
 const Marker = ({position, arrPosition}) => {
 

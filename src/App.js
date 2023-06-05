@@ -9,7 +9,7 @@ function App() {
     id: 'google-map-script',
     googleMapsApiKey: process.env.REACT_GOOGLE_API_KEY
   });
-  const { parsingCsv } = useCsv();
+  const { parsingCsv, streamParsing } = useCsv();
   const [isReady, setIsReady] = useState(false);
 
   // const center = useMemo(() => ({ lat: 18.52043, lng: 73.856743 }), []);
@@ -22,14 +22,20 @@ function App() {
       .then(restext => {
         setIsReady(true);
         parsingCsv(restext, getData);
+        // streamParsing(restext, getDataPerRow, () => {})
     })
   }, []);
 
   //const MarkerTest = useMemo(() => GenerateMarker(), []);
 
   const [testData, setTestData] = useState([]);
+
   const getData = (result) => {
     setTestData(result.data);
+  }
+
+  const getDataPerRow = (result) => {
+    setTestData(prev => [...prev, result.data]);
   }
   
 
@@ -37,8 +43,6 @@ function App() {
     console.log('GEMERATE MARKER');
     const data = testData;
     console.log('DATA:', data);
-    console.log('isready:', isReady);
-
 
 
     return data !== undefined && (
