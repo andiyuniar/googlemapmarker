@@ -40,7 +40,6 @@ function App() {
   
 
   const GenerateMarker = (result) => {
-    console.log('GEMERATE MARKER');
     const data = testData;
     console.log('DATA:', data);
 
@@ -49,7 +48,6 @@ function App() {
       <>
           {
               data?.map((pos, idx) => {
-                console.log('pos:', pos[1], pos[2]);
                  return (<MarkerF position={{ lat: pos[1], lng: pos[2] }} />)
               })
           }
